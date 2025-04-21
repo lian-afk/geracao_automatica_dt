@@ -33,3 +33,14 @@ def generate_section(base_text: str, topic: str) -> str: # get base text and des
     result = tokenizer.decode(token_result[0], skip_special_tokens=True)
     # decode:token to text | token_result:the first result being choose | skip_special_tokens:remove special tokens 
     return result #return generated text
+
+def full_doc(base_text: str, topic: str) -> str:
+    blocks = text_to_block(base_text) # turn the long texts to blocks 
+    sections = []
+
+    for i, block in enumerate(blocks):
+        section = generate_section(block, topic) # for every block, a section will be separated with that topic
+        sections.append(f'##Seção {i+1}\n\n{section}\n') # append all sections into sections list
+    
+    final_doc = "# Generated Document\n\n" + "\n".join(sections) # join all 
+    return final_doc
