@@ -13,6 +13,5 @@ structures and text structures as well.
 ## Install
 
 ```bash
-git clone https://github.com/seuusuario/nome-do-repo.git
-cd nome-do-repo
+git clone [this commit url]
 pip install -r requirements.txt
